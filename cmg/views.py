@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.contrib.auth import login, logout, authenticate
-from .forms import ReservarHora, IniciarSesionForm, RegistroForm
+from .forms import ReservaForm, IniciarSesionForm, RegistroForm
 from django.views.decorators.csrf import csrf_exempt
 from .models import AtencionMedica
 from django.contrib.auth import login, logout, authenticate
@@ -43,12 +43,12 @@ def cerrar_sesion(request):
     return redirect(home)
 
 def ReservarHora(request, action, id):
-    data = {"mesg": "", "form": AtencionMedica, "action": action, "id": id}
+    data = {"mesg": "", "form": ReservaForm, "action": action, "id": id}
 
 
     if action == 'ins':
         if request.method == "POST":
-            form = AtencionMedica(request.POST, request.FILES)
+            form = ReservaForm(request.POST, request.FILES)
             if form.is_valid:
                 try:
                     form.save()
@@ -60,11 +60,11 @@ def ReservarHora(request, action, id):
     elif action == 'upd':
         objeto = AtencionMedica.objects.get(id=id)
         if request.method == "POST":
-            form = ReservarHora(data=request.POST, files=request.FILES, instance=objeto)
+            form = ReservaForm(data=request.POST, files=request.FILES, instance=objeto)
             if form.is_valid:
                 form.save()
                 data["mesg"] = "¡Se ha actualizado la hora correctamente!"
-        data["form"] = ReservarHora(instance=objeto)
+        data["form"] = ReservaForm(instance=objeto)
 
 
     elif action == 'del':
