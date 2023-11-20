@@ -8,7 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 class ReservaForm(ModelForm):
     class Meta:
         model = AtencionMedica
-        fields = ['id', 'fecha', 'doctor', 'precio', 
+        fields = ['fecha', 'doctor', 
         'especialidad']
 
 class IniciarSesionForm(Form):

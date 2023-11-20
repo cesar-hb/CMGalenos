@@ -6,12 +6,25 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView, D
 from django.contrib.auth import login, logout, authenticate
 from .forms import ReservaForm, IniciarSesionForm, RegistroForm
 from django.views.decorators.csrf import csrf_exempt
-from .models import AtencionMedica
+from .models import AtencionMedica, Especialidad
 from django.contrib.auth import login, logout, authenticate
 
 
 def home(request):
-    return render(request, "cmg/home.html") 
+    return render(request, "cmg/home.html")
+
+def acerca_de(request):
+    return render(request, "cmg/acerca_de.html") 
+
+def contacto(request):
+    return render(request, "cmg/contacto.html") 
+
+def agenda_medico(request):
+    return render(request, "cmg/agenda_medico.html") 
+
+def reporte_informes(request):
+    return render(request, "cmg/reporte_informes.html") 
+
 
 class registrar_usuario(CreateView):
     model = User
@@ -78,3 +91,12 @@ def ReservarHora(request, action, id):
 
     data["list"] = AtencionMedica.objects.all().order_by('id')
     return render(request, "cmg/reservar_hora.html", data)
+
+def poblar_bd(request):
+    Especialidad.objects.all().delete()
+    Especialidad.objects.Create(idEspecialidad=1, nombreEspecialidad="Kinesiología")
+    Especialidad.objects.Create(idEspecialidad=2, nombreEspecialidad="Oncología")
+    Especialidad.objects.Create(idEspecialidad=3, nombreEspecialidad="Medicina general")
+    Especialidad.objects.Create(idEspecialidad=4, nombreEspecialidad="Medicina niños")
+    Especialidad.objects.Create(idEspecialidad=5, nombreEspecialidad="Oftalmología")
+    return redirect(reservar_hora, action='ins', id = '-1')

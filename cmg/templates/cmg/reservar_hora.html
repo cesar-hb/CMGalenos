@@ -22,35 +22,5 @@
             {% endif %}
         </form>
         {% endif %}
-        {% if list %}
-        <table id="tabla_datos">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Fecha</th>
-                    <th>Doctor</th>
-                    <th>Precio</th>
-                    <th>Especialidad</th>
-                    <th class="titulo_boton">Editar</th>
-                    <th class="titulo_boton">Eliminar</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for ve in list %}
-                <tr>
-                    <td width="50">{{ ve.id }}</td>
-                    <td width="150">{{ ve.fecha }}</td>
-                    <td width="200">{{ ve.doctor }}</td>
-                    <td width="150">{{ ve.precio }}</td>
-                    <td width="70">{{ ve.especialidad }}</td>
-                    <td><a href="{% url 'AtencionMedica' 'upd' ve.id %}" 
-                        class="btn btn-primary btn-sm boton_chico">Editar</a></td>
-                    <td><a href="{% url 'AtencionMedica' 'del' ve.id %}" 
-                        class="btn btn-danger btn-sm boton_chico">Eliminar</a></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        {% endif %}
-        <br>
+        <a href="{% url 'poblar_bd' %}" class="btn btn-info btn-sm">Generar Categorías</a>
 {% endblock %}
