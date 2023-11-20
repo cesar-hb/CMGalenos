@@ -27,3 +27,9 @@ class AtencionMedica(models.Model):
     def __str__(self):
         return f"{self.id} {self.fecha} ({self.doctor}) {self.precio} {self.especialidad}"
 
+class AgendaMedica(models.Model):
+    id = models.IntegerField(primary_key=True, verbose_name="ID")
+    doctor = models.CharField(max_length=200, null=True, blank=True, verbose_name="Doctor a cargo")
+    
+
+
