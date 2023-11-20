@@ -1,0 +1,36 @@
+{% extends 'cmg/base.html' %}
+{% load static%}
+{% block content %} 
+
+<div class="container-fluid text-center"><h1>Centro médico Galenos</h1></div>
+
+<ion-slides [options]="slideOpt">
+  <ion-slide>
+    <ion-card >
+      <!-- Conten -->
+    </ion-card>
+  </ion-slide>
+  <ion-slide>
+    <ion-card>
+      <!-- Content -->
+    </ion-card>
+  </ion-slide>
+  <ion-slide>
+    Some content..
+  </ion-slide>
+</ion-slides>
+
+
+
+
+<ion-card>
+  <ion-card-content>
+    <ion-text color="primary">
+      <p>En Galenos, nos dedicamos a proporcionar atención médica integral y 
+        de calidad para cuidar de tu bienestar. Nuestro experimentado equipo de profesionales médicos está comprometido 
+        con tu salud y se esfuerza por brindar un enfoque personalizado a cada paciente.</p>
+    </ion-text>
+  </ion-card-content>
+  
+</ion-card>
+{% endblock %}
