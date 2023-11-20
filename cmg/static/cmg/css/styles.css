@@ -67,14 +67,6 @@ a {
 	border-radius: 5px;
 }
 
-.slideOpt {
-    direction: 'vertical',
-    slidesPerView: 3,
-    pagination: {
-      el: '.swiper-pagination',
-    }
-  }
-
 /* ================================= 
   Media Queries
 ==================================== */
@@ -105,5 +97,114 @@ a {
 		justify-content: space-between;
 	}
 
-}
-
+    
+    .container{
+        width:100vw;
+        height:80vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+      }
+      .slider {
+        height: 750px;
+        width:40vw;
+        display: flex;
+        perspective: 1000px;
+        position: relative;
+        align-items:center;
+      }
+      .box1{      background:url('/media/images/licencias_medicas.jpg');
+        background-size:cover;
+        background-position:center center;}
+      .box2{
+      background:url('/media/images/investigacion.jpg');
+        background-size:cover;
+        background-position:center center;}
+      .box3{
+      background:url('/media/images/mas_blanco.jpg');
+        background-size:cover;
+        background-position:center center;}
+      .box4{
+      background:url('/media/images/prioridad_salud.jpg');
+        background-size:cover;
+        background-position:center center;}
+      .box5{
+      background:url('/media/images/profesional_medico.jpg');
+        background-size:cover;
+        background-position:center center;}
+      .box6{
+      background:url('/media/images/contactanos.jpg');
+        background-size:cover;
+        background-position:center center;}
+      .box7{
+      background:url('/media/images/CMG2.png');
+        background-size:cover;
+        background-position:center center;}
+      
+      .slider [class*="box"] {
+      /*   float: left; */
+        overflow: hidden;
+        border-radius:20px;
+        transition: all 1s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+          position:absolute;
+      }
+      .slider [class*="box"]:nth-child(7),
+      .slider [class*="box"]:nth-child(1) {
+        width: 100vh;
+        height: 60vh;
+        transform: scale(0.2) translate(-50%,-50%);
+        top: 10%;
+        z-index:1;
+      }
+      .slider [class*="box"]:nth-child(2),
+      .slider [class*="box"]:nth-child(6) {
+        width: 100vh;
+        height: 60vh;
+        transform: scale(0.4) translate(-50%,-50%);
+        top: 20%;
+        z-index:2;
+      }
+      .slider [class*="box"]:nth-child(3),
+      .slider [class*="box"]:nth-child(5) {
+        width: 100vh;
+        height: 60vh;
+        transform: scale(0.6) translate(-50%,-50%);
+        top: 30%;
+        z-index:3;
+      }
+      .slider [class*="box"]:nth-child(4) {
+        width: 60vw;
+        height: 60vh;
+        border-color: #000000;
+        color: rgb(224, 202, 0);
+        transform: scale(1) translate(-50%,-50%);
+        top: 50%;
+        z-index:4;
+      }
+      .slider [class*="box"]:nth-child(1){
+        left:-13%;}
+      .slider [class*="box"]:nth-child(2){
+        left:-5%;}
+      .slider [class*="box"]:nth-child(3){
+        left:10%;}
+      .slider [class*="box"]:nth-child(4){
+        left:50%;}
+      .slider [class*="box"]:nth-child(5){
+        left:71%;}
+      .slider [class*="box"]:nth-child(6){
+        left:85%;}
+      .slider [class*="box"]:nth-child(7){
+        left:100%;}
+      .slider .firstSlide {
+          -webkit-animation:  firstChild 1s;
+          animation:  firstChild 1s;
+      }
+      /*Animation for buyers landing page slider*/
+      @-webkit-keyframes firstChild {
+          0% {left:100%; transform: scale(0.2) translate(-50%,-50%);}
+          100% {left: -13%; transform: scale(0.2) translate(-50%,-50%);}
+      }
+      @keyframes firstChild {
+         0% {left:100%; transform: scale(0.2) translate(-50%,-50%);}
+          100% {left: -13%; transform: scale(0.2) translate(-50%,-50%);}
+      }}
