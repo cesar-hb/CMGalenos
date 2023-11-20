@@ -1,0 +1,18 @@
+{% extends 'cmg/base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+    <link href="{% static 'cmg/css/registrar_usuario.css'%}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="container text-center">
+        <h1>Registrar Usuario</h1>
+        <div class="content container">
+            <form method="POST">
+                {% csrf_token %} {{ form.as_p }}
+                <button type="submit">Registrar</button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
