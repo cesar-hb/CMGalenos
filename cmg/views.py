@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.contrib.auth import login, logout, authenticate
-from .forms import AtencionMedica, IniciarSesionForm, RegistroForm
+from .forms import ReservarHora, IniciarSesionForm, RegistroForm
 from django.views.decorators.csrf import csrf_exempt
 from .models import AtencionMedica
 from django.contrib.auth import login, logout, authenticate
@@ -41,3 +41,40 @@ def iniciar_sesion(request):
 def cerrar_sesion(request):
     logout(request)
     return redirect(home)
+
+def ReservarHora(request, action, id):
+    data = {"mesg": "", "form": AtencionMedica, "action": action, "id": id}
+
+
+    if action == 'ins':
+        if request.method == "POST":
+            form = AtencionMedica(request.POST, request.FILES)
+            if form.is_valid:
+                try:
+                    form.save()
+                    data["mesg"] = "¡Se ha gestionado la reserva exitosamente!"
+                except:
+                    data["mesg"] = "Ha ocurrido un error al ingresar la reserva"
+
+
+    elif action == 'upd':
+        objeto = AtencionMedica.objects.get(id=id)
+        if request.method == "POST":
+            form = ReservarHora(data=request.POST, files=request.FILES, instance=objeto)
+            if form.is_valid:
+                form.save()
+                data["mesg"] = "¡Se ha actualizado la hora correctamente!"
+        data["form"] = ReservarHora(instance=objeto)
+
+
+    elif action == 'del':
+        try:
+            AtencionMedica.objects.get(id=id).delete()
+            data["mesg"] = "¡La hora se ha eliminado correctamente"
+            return redirect(AtencionMedica, action='ins', id = '-1')
+        except:
+            data["mesg"] = "¡No existe tal hora!"
+
+
+    data["list"] = AtencionMedica.objects.all().order_by('id')
+    return render(request, "cmg/reservar_hora.html", data)

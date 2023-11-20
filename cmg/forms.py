@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 
-class AtencionMedica(ModelForm):
+class ReservarHora(ModelForm):
     class Meta:
         model = AtencionMedica
         fields = ['id', 'fecha', 'doctor', 'precio', 

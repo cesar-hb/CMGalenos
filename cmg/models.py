@@ -27,4 +27,4 @@ class AtencionMedica(models.Model):
     especialidad = models.ForeignKey(Especialidad, on_delete=models.DO_NOTHING)
 
     def __str__(self):
-        return self.id
+        return f"{self.id} {self.fecha} ({self.doctor}) {self.precio} {self.especialidad}"
