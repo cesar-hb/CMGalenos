@@ -26,3 +26,4 @@ class AtencionMedica(models.Model):
 
     def __str__(self):
         return f"{self.id} {self.fecha} ({self.doctor}) {self.precio} {self.especialidad}"
+
